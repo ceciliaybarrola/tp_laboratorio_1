@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1589555811 source:c:\users\user1\desktop\tp nº2\trabajo practico nº2\main.c
+	<stdlib.h>
+	"ArrayEmployees.h"
+
+1589553492 c:\users\user1\desktop\tp nº2\trabajo practico nº2\arrayemployees.h
+	"Input.h"
+
+1589555811 source:c:\users\user1\desktop\tp nº2\trabajo practico nº2\arrayemployees.c
+	"ArrayEmployees.h"
+
+1589555811 source:c:\users\user1\desktop\tp nº2\trabajo practico nº2\input.c
+	"Input.h"
+
+1589553231 c:\users\user1\desktop\tp nº2\trabajo practico nº2\input.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+
