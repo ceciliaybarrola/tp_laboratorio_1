@@ -23,8 +23,6 @@ Employee* employee_newParametros(char* idStr,char* nameStr,char* hoursWorkedStr,
     int auxInt;
     float auxFloat;
 
-
-
     if(idStr!=NULL && nameStr!=NULL && hoursWorkedStr!=NULL && salaryStr!=NULL)
     {
         employee=(Employee*)malloc(sizeof(Employee));
@@ -39,6 +37,8 @@ Employee* employee_newParametros(char* idStr,char* nameStr,char* hoursWorkedStr,
             auxFloat=atof(salaryStr);
             employee_setSueldo(employee, auxFloat);
         }
+    }else{
+        printf("ERROR\n");
     }
 
 
@@ -71,6 +71,8 @@ int employee_delete(LinkedList* pArrayListEmployee)
                 ret=0;
             }
         }
+    }else{
+        printf("ERROR\n");
     }
 
 
@@ -91,7 +93,8 @@ int employee_PrintOneEmployee(Employee* employee)
         employee_getSueldo(employee, &salary);
 
         printf("%10d %20s %10d %10.2f\n", id, name, hoursWorked, salary);
-
+    }else{
+        printf("ERROR\n");
     }
 
 
@@ -99,22 +102,29 @@ int employee_PrintOneEmployee(Employee* employee)
 
 int employee_FindById(LinkedList* pArrayListEmployee, int id)
 {
-    Employee* aux;
+    Employee* employee;
     int auxId;
     int i;
     int index=-1;
-    int size=ll_len(pArrayListEmployee);
 
-    for(i=0; i<size; i++)
+    if(pArrayListEmployee != NULL)
     {
-        aux=ll_get(pArrayListEmployee, i);
-        employee_getId(aux, &auxId);
+        int size=ll_len(pArrayListEmployee);
 
-        if(id == auxId){
-            index=i;
-            break;
+        for(i=0; i<size; i++)
+        {
+            employee=ll_get(pArrayListEmployee, i);
+            employee_getId(employee, &auxId);
+
+            if(id == auxId){
+                index=i;
+                break;
+            }
         }
+    }else{
+        printf("ERROR\n");
     }
+
     return index;
 
 }
@@ -127,6 +137,7 @@ int employee_setNombre(Employee* employee,char* name)
         ret=1;
         strcpy(employee->name, name);
     }
+
     return ret;
 }
 
@@ -219,31 +230,54 @@ int employee_getHorasTrabajadas(Employee* employee,int* hoursWorked)
 int employee_CompareByName(Employee* e1, Employee* e2)
 {
     //verificar nulidad
-
-
     return strcmp(e1->name, e2->name);
+}
+int employee_CompareBySalary(Employee* e1, Employee* e2)
+{
+    int ret=0;
+    if(e1 != NULL && e2 != NULL)
+    {
+        if(e1->salary > e2->salary)
+        {
+            ret=1;
+        }
+    }
+    return ret;
+}
+int employee_CompareByHoursWorked(Employee* e1, Employee* e2)
+{
+    int ret=0;
+    if(e1 != NULL && e2 != NULL)
+    {
+        if(e1->hoursWorked > e2->hoursWorked)
+        {
+            ret=1;
+        }
+    }
+    return ret;
+
 }
 
 int employee_CompareById(Employee* e1, Employee* e2)
 {
-    //verificar nulidad
-
-    if(e1->id > e2->id)
+    int ret;
+    if(e1 != NULL && e2 != NULL)
     {
-        return 1;
-    }
-    else
-    {
-        if(e1->id < e2->id)
+        if(e1->id > e2->id)
         {
-            return -1;
+            ret=1;
         }
         else
         {
-            return 0;
+            if(e1->id < e2->id)
+            {
+                ret=0;
+            }
         }
     }
-    return strcmp(e1->name, e2->name);
+
+
+    return ret;
 }
 
 

@@ -18,7 +18,20 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
         if(myTextFile!=NULL)
         {
             parser_EmployeeFromText(myTextFile, pArrayListEmployee);
+        }else{
+            printf("Archivo inexistente, se procederá a crear una carpeta\n");
+
+            myTextFile=fopen(path, "w");
+            if(myTextFile!=NULL)
+            {
+                printf("Carpeta creada\n");
+            }else{
+                printf("ERROR! No se ha podido crear carpeta\n");
+            }
+
         }
+    }else{
+        printf("ERROR\n");
     }
 
 
@@ -35,15 +48,21 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
         myBinaryFile=fopen(path, "rb");
         if(myBinaryFile!=NULL)
         {
-            myBinaryFile=fopen(path, "rb");
-            if(myBinaryFile!=NULL){
-                parser_EmployeeFromBinary(myBinaryFile, pArrayListEmployee);
+            parser_EmployeeFromBinary(myBinaryFile, pArrayListEmployee);
+
+        }else{
+            printf("Archivo inexistente, se procederá a crear una carpeta\n");
+            myBinaryFile=fopen(path, "wb");
+            if(myBinaryFile!=NULL)
+            {
+                printf("Carpeta creada\n");
+            }else{
+                printf("ERROR! No se ha podido crear carpeta\n");
             }
         }
+    }else{
+        printf("ERROR\n");
     }
-
-
-
     return 1;
 }
 
@@ -84,7 +103,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
             id=GetId(maxId);
             printf("Su id es: %d\n", id);
             getString(name, "Ingrese nombre del empleado: ", "ERROR! Ingrese nombre del empleado: ");
-            hoursWorked=GetInt("Ingrese horas trabajadas del empleado: ","ERROR! Ingrese horas trabajadas del empleado: ",0, 325);
+            hoursWorked=GetInt("Ingrese horas trabajadas del empleado: ","ERROR! Ingrese horas trabajadas del empleado: ",60, 325);
             salary=GetFloat("Ingrese salario del empleado: ","ERROR! Ingrese salario del empleado: ",10000.0, 55000.0);
 
             employee_setId(employee, id);
@@ -94,6 +113,8 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 
             ll_add(pArrayListEmployee, employee);
         }
+    }else{
+        printf("ERROR\n");
     }
 
 
@@ -126,8 +147,8 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
                 printf("No se encontro id\n");
                 break;
         }
-
-
+    }else{
+        printf("ERROR\n");
     }
     return 1;
 }
@@ -139,19 +160,57 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     int size;
     Employee* aux;
 
-    size = ll_len(pArrayListEmployee);
-    for(i=0; i<size; i++)
+    if(pArrayListEmployee != NULL)
     {
-        aux =ll_get(pArrayListEmployee, i);
-        employee_PrintOneEmployee(aux);
+        size = ll_len(pArrayListEmployee);
+        for(i=0; i<size; i++)
+        {
+            aux =ll_get(pArrayListEmployee, i);
+            employee_PrintOneEmployee(aux);
+        }
+    }else{
+        printf("ERROR\n");
     }
+
     return 1;
 }
 
 
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-return 1;
+    int i;
+    int option;
+
+    if(pArrayListEmployee != NULL)
+    {
+        option=GetInt("MENU DE ORDENAMIENTOS\n1.Ordenar por nombre alfabeticamente\n2.Ordenar por id\n3.Ordenar por salario\n4.Ordenar por horas trabajadas\nIngrese la opcion: ", "ERROR! reingrese la opcion: ",1,4);
+        printf("Ordenando...\n");
+        switch(option)
+        {
+            case 1:
+                printf("Ordenando...");
+                ll_sort(pArrayListEmployee, employee_CompareByName, 1);
+                break;
+            case 2:
+                ll_sort(pArrayListEmployee, employee_CompareById, 1);
+                break;
+            case 3:
+                ll_sort(pArrayListEmployee, employee_CompareBySalary, 1);
+                break;
+            case 4:
+                ll_sort(pArrayListEmployee, employee_CompareByHoursWorked, 1);
+                break;
+        }
+
+
+
+
+    }
+    controller_ListEmployee(pArrayListEmployee);
+
+
+
+    return 1;
 }
 
 
@@ -184,18 +243,12 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
                 employee_getSueldo(employee, &salary);
 
                 fprintf(myTextFile, "%d,%s,%d,%.0f\n", id, name, hoursWorked, salary);
-
             }
-
-
         }
         fclose(myTextFile);
+    }else{
+        printf("ERROR\n");
     }
-
-
-
-
-
     return 1;
 }
 
@@ -221,6 +274,8 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 
             fclose(myBinaryFile);
         }
+    }else{
+        printf("ERROR\n");
     }
 
     return 1;

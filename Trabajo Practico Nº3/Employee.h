@@ -32,5 +32,7 @@ int employee_getSueldo(Employee* employee,float* sueldo);
 
 int employee_CompareByName(Employee* e1, Employee* e2);
 int employee_CompareById(Employee* e1, Employee* e2);
+int employee_CompareBySalary(Employee* e1, Employee* e2);
+int employee_CompareByHoursWorked(Employee* e1, Employee* e2);
 
 #endif //employee_H_INCLUDED

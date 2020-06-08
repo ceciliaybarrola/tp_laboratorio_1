@@ -38,7 +38,7 @@ int main()
                 controller_addEmployee(myList);
                 break;
             case 4:
-
+                controller_editEmployee(myList);///falta esta
                 break;
             case 5:
                 controller_removeEmployee(myList);
@@ -47,7 +47,7 @@ int main()
                 controller_ListEmployee(myList);
                 break;
             case 7:
-
+                controller_sortEmployee(myList);
                 break;
             case 8:
                 controller_saveAsText("data.csv",myList);
