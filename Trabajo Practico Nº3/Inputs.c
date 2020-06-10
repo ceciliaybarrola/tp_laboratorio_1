@@ -4,17 +4,17 @@
 int UserMenue(void)
 {
     int option;
-    printf("MENU DE OPCIONES\n");
-    printf("1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n");
-    printf("2. Cargar los datos de los empleados desde el archivo data.bin (modo binario).\n");
-    printf("3. Alta de empleado\n");
-    printf("4. Modificar datos de empleado\n");
-    printf("5. Baja de empleado\n");
-    printf("6. Listar empleados\n");
-    printf("7. Ordenar empleados\n");
-    printf("8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
-    printf("9. Guardar los datos de los empleados en el archivo data.bin (modo binario).\n");
-    printf("10. Salir\n");
+    printf("MENU DE OPCIONES\n"
+    "1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n"
+    "2. Cargar los datos de los empleados desde el archivo data.bin (modo binario).\n"
+    "3. Alta de empleado\n"
+    "4. Modificar datos de empleado\n"
+    "5. Baja de empleado\n"
+    "6. Listar empleados\n"
+    "7. Ordenar empleados\n"
+    "8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n"
+    "9. Guardar los datos de los empleados en el archivo data.bin (modo binario).\n"
+    "10. Salir\n");
     printf("\n");
 
     option=GetInt("Ingrese una opcion: ","No es una opcion valida, reingrese la opcion: ",1,10);

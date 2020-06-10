@@ -12,7 +12,6 @@ int UserMenue(void);
 /** \brief it generates an id by adding a counter and a constant value
  *
  * \param constant int: value that marks the number from which the id will be generated
- * \param counter int: revenue counter that allows this id to be unique
  * \return int: Return returns the sum of the constant number and the counter
  *
  */

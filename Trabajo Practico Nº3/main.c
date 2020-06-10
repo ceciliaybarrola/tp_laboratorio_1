@@ -4,56 +4,130 @@
 #include "Controller.h"
 #include "Employee.h"
 #include "Inputs.h"
-/****************************************************
-    Menu:
-     1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).
-     2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).
-     3. Alta de empleado
-     4. Modificar datos de empleado
-     5. Baja de empleado
-     6. Listar empleados
-     7. Ordenar empleados
-     8. Guardar los datos de los empleados en el archivo data.csv (modo texto).
-     9. Guardar los datos de los empleados en el archivo data.csv (modo binario).
-    10. Salir
-*****************************************************/
-
 
 int main()
 {
     LinkedList* myList = ll_newLinkedList();
+    int id=0;
+    int ret;
     int option;
-    do
-    {
+    do{
         option=UserMenue();
+        system("cls");
         switch(option)
         {
             case 1:
-                controller_loadFromText("data.csv",myList);
+                ret=controller_loadFromText("data.csv",myList);
+                switch(ret){
+                    case -2:
+                        printf("CARPETA CREADA EXITOSAMENTE!\n");
+                        break;
+                    case -1:
+                        printf("ERROR AL CREAR LA CARPETA!\n");
+                        break;
+                    case 0:
+                        printf("ERROR!\n");
+                        break;
+                    default:
+                        printf("CARGA EXITOSA!\n");
+                        id=ret;
+                        break;
+                }
                 break;
             case 2:
-                controller_loadFromBinary("data.bin", myList);
+                ret=controller_loadFromBinary("data.bin", myList);
+                switch(ret){
+                    case -2:
+                        printf("CARPETA CREADA EXITOSAMENTE!\n");
+                        break;
+                    case -1:
+                        printf("ERROR AL CREAR LA CARPETA!\n");
+                        break;
+                    case 0:
+                        printf("ERROR!\n");
+                        break;
+                    default:
+                        printf("CARGA EXITOSA!\n");
+                        id=ret;
+                }
                 break;
             case 3:
-                controller_addEmployee(myList);
+                ret=controller_addEmployee(myList, &id);
+                switch(ret){
+                    case 0:
+                        printf("ERROR!\n");
+                        break;
+                    case 1:
+                        printf("ALTA EXITOSA!\n");
+                }
                 break;
             case 4:
-                controller_editEmployee(myList);///falta esta
+                ret=controller_editEmployee(myList);
+                switch(ret){
+                    case 0:
+                        printf("ERROR!\n");
+                        break;
+                    case 1:
+                        printf("MODIFICACION EXITOSA!\n");
+                        break;
+                    case -1:
+                        printf("NO SE ENCONTRO ID!\n");
+                        break;
+                    case -2:
+                        printf("ACCION CANCELADA!\n");
+                        break;
+                }
                 break;
             case 5:
-                controller_removeEmployee(myList);
+                ret=controller_removeEmployee(myList);
+                switch(ret){
+                    case 0:
+                        printf("ERROR!\n");
+                        break;
+                    case 1:
+                        printf("MODIFICACION EXITOSA!\n");
+                        break;
+                    case -1:
+                        printf("NO SE ENCONTRO ID!\n");
+                        break;
+                    case -2:
+                        printf("ACCION CANCELADA!\n");
+                        break;
+                }
                 break;
             case 6:
-                controller_ListEmployee(myList);
+                ret=controller_ListEmployee(myList);
+                if(ret==0){
+                    printf("ERROR!\n");
+                }
                 break;
             case 7:
-                controller_sortEmployee(myList);
+                ret=controller_sortEmployee(myList);
+                if(ret==0){
+                    printf("ERROR!\n");
+                }
                 break;
             case 8:
-                controller_saveAsText("data.csv",myList);
+                ret=controller_saveAsText("data.csv",myList);
+                switch(ret){
+                    case 0:
+                        printf("ERROR!\n");
+                        break;
+                    case 1:
+                        printf("SE HA GUARDADO EL ARCHIVO EXITOSAMENTE!\n");
+                        break;
+                }
                 break;
             case 9:
-                controller_saveAsBinary("data.bin", myList);
+                ret=controller_saveAsBinary("data.bin", myList);
+                switch(ret){
+                    case 0:
+                        printf("ERROR!\n");
+                        break;
+                    case 1:
+                        printf("SE HA GUARDADO EL ARCHIVO EXITOSAMENTE!\n");
+                        break;
+                }
                 break;
             case 10:
                 break;
@@ -61,6 +135,9 @@ int main()
     system("pause");
     system("cls");
     }while(option!=10);
+
+    return 0;
+}
 
 
  /* Employee* e1 = (Employee*) malloc(sizeof(Employee));
@@ -117,5 +194,3 @@ int main()
 
 
 
-    return 0;
-}

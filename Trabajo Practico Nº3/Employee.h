@@ -13,26 +13,27 @@ typedef struct
 
 Employee* employee_new();
 Employee* employee_newParametros(char* idStr,char* nameStr,char* hoursWorkedStr,char* salaryStr);
-int employee_delete(LinkedList* pArrayListEmployee);
+int employee_delete(LinkedList* pArrayListEmployee, int index);
+int employee_edit(LinkedList* pArrayListEmployee, int id);
 int employee_FindById(LinkedList* pArrayListEmployee, int id);
+
 int employee_PrintOneEmployee(Employee* employee);
 
-
 int employee_setId(Employee* employee,int id);
-int employee_getId(Employee* themployeeis,int* id);
+int employee_getId(Employee* employee,int* id);
 
-int employee_setNombre(Employee* employee,char* name);
-int employee_getNombre(Employee* employee,char* name);
+int employee_setName(Employee* employee,char* name);
+int employee_getName(Employee* employee,char* name);
 
 int employee_setHoursWorked(Employee* employee,int hoursWorked);
-int employee_getHorasTrabajadas(Employee* employee,int* hoursWorked);
+int employee_getHoursWorked(Employee* employee,int* hoursWorked);
 
-int employee_setSueldo(Employee* employee,float sueldo);
-int employee_getSueldo(Employee* employee,float* sueldo);
+int employee_setSalary(Employee* employee,float salary);
+int employee_getSalary(Employee* employee,float* salary);
 
-int employee_CompareByName(Employee* e1, Employee* e2);
-int employee_CompareById(Employee* e1, Employee* e2);
-int employee_CompareBySalary(Employee* e1, Employee* e2);
-int employee_CompareByHoursWorked(Employee* e1, Employee* e2);
+int employee_CompareByName(void* e1, void* e2);
+int employee_CompareById(void* employee1, void* employee2);
+int employee_CompareBySalary(void* employee1, void* employee2);
+int employee_CompareByHoursWorked(void* employee1, void* employee2);
 
 #endif //employee_H_INCLUDED
