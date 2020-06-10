@@ -90,4 +90,6 @@ int IsAnUnsignedIntNumber(char charArray[]);
  *
  */
 int GetUnsignedInt(char message[], char errorMessage[]);
+int FunctionReturnMessagesWithDefault(int*, int*,int ret, char message_2[], char message_1[], char message0[], char defaultMessage[]);
+void FunctionReturnMessages(int ret, char message_2[], char message_1[], char message0[], char message1[]);
 

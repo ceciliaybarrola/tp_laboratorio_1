@@ -11,186 +11,60 @@ int main()
     int id=0;
     int ret;
     int option;
+    int flagMenu=0;
+    int flagText=0;
+    int flagBinary=0;
+    char confirmation[100];
     do{
         option=UserMenue();
         system("cls");
         switch(option)
         {
             case 1:
-                ret=controller_loadFromText("data.csv",myList);
-                switch(ret){
-                    case -2:
-                        printf("CARPETA CREADA EXITOSAMENTE!\n");
-                        break;
-                    case -1:
-                        printf("ERROR AL CREAR LA CARPETA!\n");
-                        break;
-                    case 0:
-                        printf("ERROR!\n");
-                        break;
-                    default:
-                        printf("CARGA EXITOSA!\n");
-                        id=ret;
-                        break;
-                }
+                ret=controller_loadFromText("data.csv",myList, flagMenu);
+                id=FunctionReturnMessagesWithDefault(&flagMenu, &flagText,ret,
+                   "CARPETA CREADA EXITOSAMENTE!","ERROR AL CREAR LA CARPETA!","ERROR!(elemento nulo o ya se han leido los archivos)","CARGA EXITOSA!");
                 break;
             case 2:
-                ret=controller_loadFromBinary("data.bin", myList);
-                switch(ret){
-                    case -2:
-                        printf("CARPETA CREADA EXITOSAMENTE!\n");
-                        break;
-                    case -1:
-                        printf("ERROR AL CREAR LA CARPETA!\n");
-                        break;
-                    case 0:
-                        printf("ERROR!\n");
-                        break;
-                    default:
-                        printf("CARGA EXITOSA!\n");
-                        id=ret;
-                }
+                ret=controller_loadFromBinary("data.bin", myList, flagMenu);
+                id=FunctionReturnMessagesWithDefault(&flagMenu, &flagBinary,ret,"CARPETA CREADA EXITOSAMENTE!","ERROR AL CREAR LA CARPETA!","ERROR!(elemento nulo o ya se han leido los archivos)","CARGA EXITOSA!");
                 break;
             case 3:
-                ret=controller_addEmployee(myList, &id);
-                switch(ret){
-                    case 0:
-                        printf("ERROR!\n");
-                        break;
-                    case 1:
-                        printf("ALTA EXITOSA!\n");
-                }
+                ret=controller_addEmployee(myList, &id, flagMenu);
+                FunctionReturnMessages(ret," ", " ", "ERROR!(elemento nulo o no se leyo el archivo)","ALTA EXITOSA!");
                 break;
             case 4:
                 ret=controller_editEmployee(myList);
-                switch(ret){
-                    case 0:
-                        printf("ERROR!\n");
-                        break;
-                    case 1:
-                        printf("MODIFICACION EXITOSA!\n");
-                        break;
-                    case -1:
-                        printf("NO SE ENCONTRO ID!\n");
-                        break;
-                    case -2:
-                        printf("ACCION CANCELADA!\n");
-                        break;
-                }
+                FunctionReturnMessages(ret,"ACCION CANCELADA!", "NO SE ENCONTRO ID!", "ERROR!(elemento nulo o no hay empleados en la lista)","MODIFICACION EXITOSA!");
                 break;
             case 5:
                 ret=controller_removeEmployee(myList);
-                switch(ret){
-                    case 0:
-                        printf("ERROR!\n");
-                        break;
-                    case 1:
-                        printf("MODIFICACION EXITOSA!\n");
-                        break;
-                    case -1:
-                        printf("NO SE ENCONTRO ID!\n");
-                        break;
-                    case -2:
-                        printf("ACCION CANCELADA!\n");
-                        break;
-                }
+                FunctionReturnMessages(ret,"ACCION CANCELADA!", "NO SE ENCONTRO ID!", "ERROR!(elemento nulo o no hay empleados en la lista)","ELIMINACION EXITOSA!");
                 break;
             case 6:
                 ret=controller_ListEmployee(myList);
-                if(ret==0){
-                    printf("ERROR!\n");
-                }
+                FunctionReturnMessages(ret," ", "NO HAY EMPLEADOS EN LA LISTA", "ERROR!(elemento nulo o no hay empleados en la lista)","EMPLEADOS LISTADOS EXITOSAMENTE!");
                 break;
             case 7:
                 ret=controller_sortEmployee(myList);
-                if(ret==0){
-                    printf("ERROR!\n");
-                }
+                FunctionReturnMessages(ret," ", " ", "ERROR!(elemento nulo o no hay empleados en la lista)"," ");
                 break;
             case 8:
-                ret=controller_saveAsText("data.csv",myList);
-                switch(ret){
-                    case 0:
-                        printf("ERROR!\n");
-                        break;
-                    case 1:
-                        printf("SE HA GUARDADO EL ARCHIVO EXITOSAMENTE!\n");
-                        break;
-                }
+                ret=controller_saveAsText("data.csv",myList, flagText);
+                FunctionReturnMessages(ret," ", " ", "ERROR!(elemento nulo o no se esta trabajando con la carpeta correspondiente)","SE HA GUARDADO EL ARCHIVO EXITOSAMENTE!");
                 break;
             case 9:
-                ret=controller_saveAsBinary("data.bin", myList);
-                switch(ret){
-                    case 0:
-                        printf("ERROR!\n");
-                        break;
-                    case 1:
-                        printf("SE HA GUARDADO EL ARCHIVO EXITOSAMENTE!\n");
-                        break;
-                }
+                ret=controller_saveAsBinary("data.bin", myList, flagBinary);
+                FunctionReturnMessages(ret," ", " ", "ERROR!(elemento nulo o no se esta trabajando con la carpeta correspondiente)","SE HA GUARDADO EL ARCHIVO EXITOSAMENTE!");
                 break;
             case 10:
+                getString(confirmation,"Está seguro que desea salir?","ERROR! Está seguro que desea salir?");
+                if(strcmpi(confirmation, "si")==0)
+                {option=11;}
                 break;
         }
     system("pause");
     system("cls");
-    }while(option!=10);
-
+    }while(option!=11);
     return 0;
 }
-
-
- /* Employee* e1 = (Employee*) malloc(sizeof(Employee));
-    Employee* e2 = (Employee*) malloc(sizeof(Employee));
-    Employee* e3 = (Employee*) malloc(sizeof(Employee));
-
-    e1->id = 5;
-    e1->horasTrabajadas = 10;
-    strcpy(e1->nombre,"Juan");
-    e1->sueldo = 10000;
-
-    e2->id = 1;
-    e2->horasTrabajadas = 15;
-    strcpy(e2->nombre,"Martin");
-    e2->sueldo = 15000;
-
-    e3->id = 3;
-    e3->horasTrabajadas = 10;
-    strcpy(e3->nombre,"Aria");
-    e3->sueldo = 20000;
-
-    ll_add(miLista, e1);
-    ll_add(miLista, e2);
-    ll_add(miLista, e3);
-
-
-
-    size = ll_len(miLista);
-
-
-    ll_sort(miLista,employee_CompareById,0);
-
-    for(i=0; i<size; i++)
-    {
-        aux =(Employee*) ll_get(miLista, i);
-        printf("%d--%s--%d--%d\n", aux->id, aux->nombre, aux->horasTrabajadas, aux->sueldo);
-
-    }
-
-    printf("Remuevo 1\n");
-
-    ll_remove(miLista, 1);
-
-    size = ll_len(miLista);
-    for(i=0; i<size; i++)
-    {
-        aux =(Employee*) ll_get(miLista, i);
-        printf("%d--%s--%d--%d\n", aux->id, aux->nombre, aux->horasTrabajadas, aux->sueldo);
-
-    }
-
-    printf("El indice de e2 es: %d\n", ll_indexOf(miLista,e3));
-    */
-
-
-

@@ -8,12 +8,12 @@
 
 
 
-int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
+int controller_loadFromText(char* path, LinkedList* pArrayListEmployee, int flag)
 {
     FILE* myTextFile;
     int ret=-1;
 
-    if(path!=NULL && pArrayListEmployee!= NULL)
+    if(path!=NULL && pArrayListEmployee!= NULL && flag==0)
     {
         myTextFile=fopen(path, "r");
         if(myTextFile!=NULL)
@@ -29,18 +29,20 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
                 ret=-2;
             }
         }
+    }else{
+        ret=0;
     }
 
     return ret;
 }
 
 
-int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
+int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee, int flag)
 {
     FILE* myBinaryFile;
     int ret=-1;
 
-    if(path!=NULL && pArrayListEmployee!= NULL)
+    if(path!=NULL && pArrayListEmployee!= NULL && flag==0)
     {
         myBinaryFile=fopen(path, "rb");
         if(myBinaryFile!=NULL)
@@ -56,6 +58,8 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
                 ret=-2;
             }
         }
+    }else{
+        ret=0;
     }
 
 
@@ -63,7 +67,7 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 }
 
 
-int controller_addEmployee(LinkedList* pArrayListEmployee, int* id)
+int controller_addEmployee(LinkedList* pArrayListEmployee, int* id, int flag)
 {
     Employee* employee;
     char name[100];
@@ -71,7 +75,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee, int* id)
     float salary;
     int ret=0;
 
-    if(pArrayListEmployee != NULL && id!=NULL)
+    if(pArrayListEmployee != NULL && id!=NULL && flag==1)
     {
         employee=employee_new();
         if(employee != NULL)
@@ -103,15 +107,15 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     int id;
     int index;
 
-    if(pArrayListEmployee != NULL)
+    if(pArrayListEmployee != NULL && controller_ListEmployee(pArrayListEmployee)!=-1 )
     {
-        controller_ListEmployee(pArrayListEmployee);
         id=GetUnsignedInt("Ingrese ID a modificar: ", "ERROR! Ingrese ID a modificar: ");
         index=employee_FindById(pArrayListEmployee,id);
         if(index != -1)
         {
             ret=employee_edit(pArrayListEmployee, index);
         }
+
     }else{
         ret=0;
     }
@@ -125,10 +129,9 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
     int index;
     int id;
 
-    if(pArrayListEmployee != NULL)
+    if(pArrayListEmployee != NULL && controller_ListEmployee(pArrayListEmployee)!=-1 )
     {
-        controller_ListEmployee(pArrayListEmployee);
-        id= GetUnsignedInt("Ingrese ID a buscar: ", "ERROR! Igrese ID a buscar: ");
+        id= GetUnsignedInt("Ingrese ID a buscar: ", "ERROR! Ingrese ID a buscar: ");
         index= employee_FindById(pArrayListEmployee, id);
         if(index!=-1)
         {
@@ -151,15 +154,21 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     if(pArrayListEmployee != NULL)
     {
         size = ll_len(pArrayListEmployee);
-        printf("__________________________________________________________\n");
-        printf("|    ID    |       NOMBRE       |HORAS TRABAJO|  SALARIO |\n");
-        for(i=0; i<size; i++)
+        if(size!=0)
         {
-            aux =(Employee*)ll_get(pArrayListEmployee, i);
-            employee_PrintOneEmployee(aux);
+            printf("__________________________________________________________\n"
+                   "|    ID    |       NOMBRE       |HORAS TRABAJO|  SALARIO |\n"
+                   "|__________|____________________|_____________|__________|\n");
+            for(i=0; i<size; i++)
+            {
+                aux =(Employee*)ll_get(pArrayListEmployee, i);
+                employee_PrintOneEmployee(aux);
+            }
+                printf("|__________|____________________|_____________|__________|\n");
+            ret=1;
+        }else{
+            ret=-1;
         }
-            printf("|__________|____________________|_____________|__________|\n");
-        ret=1;
     }
     return ret;
 }
@@ -171,7 +180,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
     int ret=0;
     LinkedList* auxList=ll_clone(pArrayListEmployee);
 
-    if(pArrayListEmployee!= NULL && auxList != NULL)
+    if(pArrayListEmployee!= NULL && auxList != NULL && ll_len(pArrayListEmployee)!=0)
     {
         ret=1;
         do
@@ -212,12 +221,12 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 }
 
 
-int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
+int controller_saveAsText(char* path, LinkedList* pArrayListEmployee, int flag)
 {
     FILE* myTextFile;
     int ret=0;
 
-    if(pArrayListEmployee != NULL && path != NULL)
+    if(pArrayListEmployee != NULL && path != NULL && flag==1)
     {
         myTextFile=fopen(path, "w");
         if(myTextFile!= NULL)
@@ -228,12 +237,12 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
     return ret;
 }
 
-int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
+int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee, int flag)
 {
     FILE* myBinaryFile;
     int ret=0;
 
-    if(path!=NULL && pArrayListEmployee!= NULL)
+    if(path!=NULL && pArrayListEmployee!= NULL && flag==1)
     {
         myBinaryFile=fopen(path, "wb");
         if(myBinaryFile!=NULL)

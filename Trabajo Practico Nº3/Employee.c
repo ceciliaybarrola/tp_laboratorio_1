@@ -17,7 +17,7 @@ Employee* employee_new()
 
     return employee;
 }
-Employee* employee_newParametros(char* idStr,char* nameStr,char* hoursWorkedStr,char* salaryStr )
+Employee* employee_newParameters(char* idStr,char* nameStr,char* hoursWorkedStr,char* salaryStr )
 {
     Employee* employee;
     int auxInt;
@@ -80,8 +80,8 @@ int employee_PrintOneEmployee(Employee* employee)
         if(employee_getId(employee, &id)==1 && employee_getSalary(employee, &salary)==1 &&
            employee_getHoursWorked(employee, &hoursWorked)==1 &&employee_getName(employee, name)==1 )
         {
-            ret=1;
             printf("|%10d|%20s|%13d|%10.2f|\n", id, name, hoursWorked, salary);
+            ret=1;
         }
     }
 

@@ -25,7 +25,7 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
                 continue;
             }
             fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", idStr,nameStr,hoursStr,salaryStr);
-            auxEmployee=employee_newParametros(idStr, nameStr, hoursStr,salaryStr);
+            auxEmployee=employee_newParameters(idStr, nameStr, hoursStr,salaryStr);
             ll_add(pArrayListEmployee,auxEmployee);
 
             if(atoi(idStr)>maxId)///maxId se encuentra inicializada ya que sera usada como variable de retorno (los id tienen que ser positivos)

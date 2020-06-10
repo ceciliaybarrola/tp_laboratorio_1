@@ -12,7 +12,7 @@ typedef struct
 }Employee;
 
 Employee* employee_new();
-Employee* employee_newParametros(char* idStr,char* nameStr,char* hoursWorkedStr,char* salaryStr);
+Employee* employee_newParameters(char* idStr,char* nameStr,char* hoursWorkedStr,char* salaryStr);
 int employee_delete(LinkedList* pArrayListEmployee, int index);
 int employee_edit(LinkedList* pArrayListEmployee, int id);
 int employee_FindById(LinkedList* pArrayListEmployee, int id);
