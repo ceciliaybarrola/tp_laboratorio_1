@@ -22,12 +22,11 @@ int main()
         {
             case 1:
                 ret=controller_loadFromText("data.csv",myList, flagMenu);
-                id=FunctionReturnMessagesWithDefault(&flagMenu, &flagText,ret,
-                   "CARPETA CREADA EXITOSAMENTE!","ERROR AL CREAR LA CARPETA!","ERROR!(elemento nulo o ya se han leido los archivos)","CARGA EXITOSA!");
+                FunctionReturnMessagesWithDefault(&id,&flagMenu, &flagText,ret,"YA SE LEYO UN ARCHIVO","CARPETA CREADA EXITOSAMENTE!","ERROR AL CREAR LA CARPETA!","ERROR!(elemento nulo o ya se han leido los archivos)","CARGA EXITOSA!");
                 break;
             case 2:
                 ret=controller_loadFromBinary("data.bin", myList, flagMenu);
-                id=FunctionReturnMessagesWithDefault(&flagMenu, &flagBinary,ret,"CARPETA CREADA EXITOSAMENTE!","ERROR AL CREAR LA CARPETA!","ERROR!(elemento nulo o ya se han leido los archivos)","CARGA EXITOSA!");
+                FunctionReturnMessagesWithDefault(&id,&flagMenu, &flagBinary,ret,"YA SE LEYO UN ARCHIVO","CARPETA CREADA EXITOSAMENTE!","ERROR AL CREAR LA CARPETA!","ERROR!(elemento nulo o ya se han leido los archivos)","CARGA EXITOSA!");
                 break;
             case 3:
                 ret=controller_addEmployee(myList, &id, flagMenu);

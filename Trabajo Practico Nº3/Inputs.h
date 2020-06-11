@@ -9,10 +9,10 @@
  */
 int UserMenue(void);
 
-/** \brief it generates an id by adding a counter and a constant value
+/** \brief it generates an id incremented by one the last generated id
  *
- * \param constant int: value that marks the number from which the id will be generated
- * \return int: Return returns the sum of the constant number and the counter
+ * \param maxId int: last generated id
+ * \return int: returns the last id incremented by one
  *
  */
 int GetId(int maxId);
@@ -90,6 +90,32 @@ int IsAnUnsignedIntNumber(char charArray[]);
  *
  */
 int GetUnsignedInt(char message[], char errorMessage[]);
-int FunctionReturnMessagesWithDefault(int*, int*,int ret, char message_2[], char message_1[], char message0[], char defaultMessage[]);
+
+/** \brief it shows messages according to the number it receives,
+ *         the messages are passed as a parameter. It includes a default on the switch
+ *
+ * \param int*
+ * \param int*
+ * \param ret int
+ * \param message_2[] char
+ * \param message_1[] char
+ * \param message0[] char
+ * \param defaultMessage[] char
+ * \return int
+ *
+ */
+int FunctionReturnMessagesWithDefault(int* id,int*, int*,int ret, char message_3[], char message_2[], char message_1[], char message0[], char defaultMessage[]);
+
+/** \brief it shows messages according to the number it receives,
+ *         the messages are passed as a parameter
+ *
+ * \param ret int value returned by a function
+ * \param message_2[] char
+ * \param message_1[] char
+ * \param message0[] char
+ * \param message1[] char
+ * \return void
+ *
+ */
 void FunctionReturnMessages(int ret, char message_2[], char message_1[], char message0[], char message1[]);
 

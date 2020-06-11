@@ -4,18 +4,17 @@
 int UserMenue(void)
 {
     int option;
-    printf("MENU DE OPCIONES\n"
-    "1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n"
-    "2. Cargar los datos de los empleados desde el archivo data.bin (modo binario).\n"
-    "3. Alta de empleado\n"
-    "4. Modificar datos de empleado\n"
-    "5. Baja de empleado\n"
-    "6. Listar empleados\n"
-    "7. Ordenar empleados\n"
-    "8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n"
-    "9. Guardar los datos de los empleados en el archivo data.bin (modo binario).\n"
-    "10. Salir\n");
-    printf("\n");
+    printf( "MENU DE OPCIONES\n"
+            "1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n"
+            "2. Cargar los datos de los empleados desde el archivo data.bin (modo binario).\n"
+            "3. Alta de empleado\n"
+            "4. Modificar datos de empleado\n"
+            "5. Baja de empleado\n"
+            "6. Listar empleados\n"
+            "7. Ordenar empleados\n"
+            "8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n"
+            "9. Guardar los datos de los empleados en el archivo data.bin (modo binario).\n"
+            "10. Salir\n\n");
 
     option=GetInt("Ingrese una opcion: ","No es una opcion valida, reingrese la opcion: ",1,10);
 
@@ -215,11 +214,14 @@ int IsAnUnsignedIntNumber(char charArray[])
     }
     return ret;
 }
-int FunctionReturnMessagesWithDefault(int* flagMenue, int* flagReading,int ret, char message_2[], char message_1[], char message0[], char defaultMessage[])
+int FunctionReturnMessagesWithDefault(int* id,int* flagMenue, int* flagReading,int ret, char message_3[], char message_2[], char message_1[], char message0[], char defaultMessage[])
 {
     int Return=0;
 
     switch(ret){
+    case -3:
+        printf("%s\n",message_3);
+        break;
     case -2:
         printf("%s\n",message_2);
         *flagMenue=1;
@@ -235,7 +237,7 @@ int FunctionReturnMessagesWithDefault(int* flagMenue, int* flagReading,int ret, 
         *flagMenue=1;
         *flagReading=1;
         printf("%s\n",defaultMessage);
-        Return=ret;
+        *id=ret;
     }
 
     return Return;
@@ -256,6 +258,7 @@ void FunctionReturnMessages(int ret, char message_2[], char message_1[], char me
         case -2:
             printf("%s\n", message_2);
             break;
+
     }
 
 

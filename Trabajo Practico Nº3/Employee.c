@@ -20,23 +20,16 @@ Employee* employee_new()
 Employee* employee_newParameters(char* idStr,char* nameStr,char* hoursWorkedStr,char* salaryStr )
 {
     Employee* employee;
-    int auxInt;
-    float auxFloat;
 
     if(idStr!=NULL && nameStr!=NULL && hoursWorkedStr!=NULL && salaryStr!=NULL)
     {
         employee=employee_new();
         if(employee != NULL)
         {
-            auxInt=atoi(idStr);
-
-            employee_setId(employee, auxInt);
+            employee_setId(employee, atoi(idStr));
             employee_setName(employee, nameStr);
-            auxInt=atoi(hoursWorkedStr);
-            employee->hoursWorked=auxInt;
-            employee_setHoursWorked(employee, auxInt);
-            auxFloat=atof(salaryStr);
-            employee_setSalary(employee, auxFloat);
+            employee_setHoursWorked(employee, atoi(hoursWorkedStr));
+            employee_setSalary(employee, atof(salaryStr));
         }
     }else{
         printf("ERROR\n");
@@ -314,6 +307,7 @@ int employee_CompareById(void* employee1, void* employee2)
 int employee_edit(LinkedList* pArrayListEmployee, int index)
 {
     int ret=-2;
+    int flag=0;
     int option;
     Employee* employee;
     char name[100];
@@ -333,27 +327,32 @@ int employee_edit(LinkedList* pArrayListEmployee, int index)
             do{
                 option=GetInt("MENU DE MODIFICACIONES\n1.Nombre\n2.Horas trabajadas\n3.Salario\n4.EXIT\nIngrese una opcion: ",
                                "ERROR! Ingrese una opcion: ",1 , 4);
-                switch(option)
-                {
-                case 1:
-                    getString(name, "Ingrese nuevo nombre: ","ERROR! Ingrese nuevo nombre: ");
-                    break;
-                case 2:
-                    hoursWorked=GetInt("Ingrese nuevas horas trabajadas del empleado: ","ERROR! Ingrese nuevas horas trabajadas del empleado: ",60, 325);
-                    break;
-                case 3:
-                    salary=GetFloat("Ingrese nuevo salario del empleado: ","ERROR! Ingrese nuevo salario del empleado: ",10000.0, 55000.0);
-                    break;
-                case 4:
-                    getString(confirmation, "Desea realmente modificar al empleado?: ", "ERROR! Desea realmente modificar al empleado?: ");
-                    if(stricmp(confirmation, "si")==0)
-                    {
-                        ret=0;
-                        if (employee_setName(employee, name)==1 && employee_setHoursWorked(employee, hoursWorked)==1 && employee_setSalary(employee, salary)==1){
-                            ret=1;
+                if(option!=4){
+                    flag=1;
+                }
+                switch(option){
+                    case 1:
+                        getString(name, "Ingrese nuevo nombre: ","ERROR! Ingrese nuevo nombre: ");
+                        break;
+                    case 2:
+                        hoursWorked=GetInt("Ingrese nuevas horas trabajadas del empleado: ","ERROR! Ingrese nuevas horas trabajadas del empleado: ",60, 325);
+                        break;
+                    case 3:
+                        salary=GetFloat("Ingrese nuevo salario del empleado: ","ERROR! Ingrese nuevo salario del empleado: ",10000.0, 55000.0);
+                        break;
+                    case 4:
+                        if(flag==1)
+                        {
+                            getString(confirmation, "Desea realmente modificar al empleado?: ", "ERROR! Desea realmente modificar al empleado?: ");
+                            if(stricmp(confirmation, "si")==0)
+                            {
+                                ret=0;
+                                if (employee_setName(employee, name)==1 && employee_setHoursWorked(employee, hoursWorked)==1 && employee_setSalary(employee, salary)==1){
+                                    ret=1;
+                                }
+                            }
                         }
-                    }
-                    break;
+                        break;
 
                 }
             system("pause");

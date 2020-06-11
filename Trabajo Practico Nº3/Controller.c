@@ -29,6 +29,8 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee, int flag
                 ret=-2;
             }
         }
+    }else if(flag==1){
+        ret=-3;
     }else{
         ret=0;
     }
@@ -58,6 +60,8 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee, int fl
                 ret=-2;
             }
         }
+    }else if(flag==1){
+        ret=-3;
     }else{
         ret=0;
     }
@@ -89,7 +93,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee, int* id, int flag)
             if(employee_setId(employee, *id)==1 &&
                employee_setName(employee, name)==1 &&
                employee_setHoursWorked(employee, hoursWorked)==1 &&
-               employee_setSalary(employee, salary==1))
+               employee_setSalary(employee, salary)==1)
             {
                 ll_add(pArrayListEmployee, employee);
                 ret=1;
