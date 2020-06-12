@@ -295,8 +295,9 @@ int employee_CompareById(void* employee1, void* employee2)
         if(id1 > id2)
         {
             ret=1;
-        }else if(id1 < id2){
-            ret=-1;
+        }
+        if(id1 < id2){
+            ret=0;
         }
 
 

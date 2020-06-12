@@ -184,7 +184,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
     int ret=0;
     LinkedList* auxList=ll_clone(pArrayListEmployee);
 
-    if(pArrayListEmployee!= NULL && auxList != NULL && ll_len(pArrayListEmployee)!=0)
+    if(pArrayListEmployee!= NULL && auxList != NULL && ll_isEmpty(auxList)==0)
     {
         ret=1;
         do

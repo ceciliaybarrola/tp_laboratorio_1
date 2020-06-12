@@ -97,6 +97,7 @@ int GetUnsignedInt(char message[], char errorMessage[]);
  * \param int*
  * \param int*
  * \param ret int
+ * \param message_3[] char
  * \param message_2[] char
  * \param message_1[] char
  * \param message0[] char
