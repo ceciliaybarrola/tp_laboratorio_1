@@ -260,18 +260,6 @@ void FunctionReturnMessages(int ret, char message_2[], char message_1[], char me
             break;
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 

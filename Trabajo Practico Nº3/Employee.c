@@ -222,7 +222,7 @@ int employee_CompareByName(void* employee1, void* employee2)
         employee_getName(auxEmployee1, name1);
         employee_getName(auxEmployee2, name2);
 
-        ret= strcmp(name1, name2);
+        ret= stricmp(name1, name2);
     }
     return ret;
 

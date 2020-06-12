@@ -142,36 +142,36 @@ int employee_getSalary(Employee* employee,float* salary);
 
 /** \brief  It's compares the names of two employees
  *
- * \param e1 void*
- * \param e2 void*
+ * \param employee1 void*: pointer to void to be cast to pointer to employee
+ * \param employee2 void*: pointer to void to be cast to pointer to employee
  * \return int: Returns 0 if there is an NULL element or the strcimp between both names
  *
  */
-int employee_CompareByName(void* e1, void* e2);
+int employee_CompareByName(void* employee1, void* employee2);
 
 /** \brief
  *
- * \param employee1 void*
- * \param employee2 void*
- * \return int
+ * \param employee1 void*:pointer to void to be cast to pointer to employee
+ * \param employee2 void*:pointer to void to be cast to pointer to employee
+ * \return int: Returns 1 if the first employee' id is greater than the second employee' id
  *
  */
 int employee_CompareById(void* employee1, void* employee2);
 
 /** \brief
  *
- * \param employee1 void*
- * \param employee2 void*
- * \return int
+ * \param employee1 void*:pointer to void to be cast to pointer to employee
+ * \param employee2 void*:pointer to void to be cast to pointer to employee
+ * \return int Returns 1 if the first employee' salary is greater than the second employee' salary
  *
  */
 int employee_CompareBySalary(void* employee1, void* employee2);
 
 /** \brief
  *
- * \param employee1 void*
- * \param employee2 void*
- * \return int
+ * \param employee1 void*:pointer to void to be cast to pointer to employee
+ * \param employee2 void*:pointer to void to be cast to pointer to employee
+ * \return int Returns 1 if the first employee' Hours Worked is greater than the second employee' Hours Worked
  *
  */
 int employee_CompareByHoursWorked(void* employee1, void* employee2);

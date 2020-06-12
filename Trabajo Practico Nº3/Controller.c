@@ -190,22 +190,21 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
         do
         {
             option=GetInt("MENU DE ORDENAMIENTOS\n1.Ordenar por nombre alfabeticamente\n2.Ordenar por id\n3.Ordenar por salario\n4.Ordenar por horas trabajadas\n5.EXIT\nIngrese la opcion: ", "ERROR! reingrese la opcion: ",1,5);
+            if(option!=5){
+                printf("Ordenando...\n");
+            }
             switch(option)
             {
             case 1:
-                printf("Ordenando...\n");
                 ll_sort(auxList, employee_CompareByName, 1);
                 break;
             case 2:
-                printf("Ordenando...\n");
                 ll_sort(auxList, employee_CompareById, 1);
                 break;
             case 3:
-                printf("Ordenando...\n");
                 ll_sort(auxList, employee_CompareBySalary, 1);
                 break;
             case 4:
-                printf("Ordenando...\n");
                 ll_sort(auxList, employee_CompareByHoursWorked, 1);
                 break;
             }
