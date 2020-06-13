@@ -4,7 +4,8 @@
  *
  * \param path char*: file name
  * \param pArrayListEmployee LinkedList*: pointer to the linkedList where you will work
- * \return int: It returns  -2 if a file has been created, -1 if a folder could not be
+ * \param flag int: flag that validates that the file is not read twice and enables employee registrations to be made
+ * \return int: It returns -3 if a file has alredy been read, -2 if a file has been created, -1 if a folder could not be
  *             created,0 if there is a NULL element or the biggest ID if the file has been read
  *
  */
@@ -14,7 +15,8 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee);
  *
  * \param path char*: file name
  * \param pArrayListEmployee LinkedList*: pointer to the linkedList where you will work
- * \return int: It returns  -2 if a file has been created, -1 if a folder could not be
+ * \param flag int: flag that validates that the file is not read twice and enables employee registrations to be made
+ * \return int: It returns -3 if a file has alredy been read, -2 if a file has been created, -1 if a folder could not be
  *             created,0 if there is a NULL element or the biggest ID if the file has been read
  *
  */
@@ -28,7 +30,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee);
  * \return int: Returns 0 if there is an NULL element or the file has not been read or 1 if it's OK
  *
  */
-int controller_addEmployee(LinkedList* pArrayListEmployee, int* id, int flag);
+int controller_addEmployee(LinkedList* pArrayListEmployee, int* id);
 
 /** \brief Controller that works as a bridge between the main and the employee edition. It ask for an employee' id
  *         and validate that it is valid
@@ -68,19 +70,25 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee);
  *
  * \param path char*: file name
  * \param pArrayListEmployee LinkedList*
- * \return int: Returns 0 if there is an NULL element or there isn't any employees in the list or 1 if it's OK
+ * \param flag int: flag that validates that the file that has been opened before corresponds to the type of file
+ *                  in which it will be saved (if a text file has been opened, it can be saved in the option "Save
+ *                  employee data in the file data.csv ")
+ * \return int: Returns 0 if there is an NULL element or 1 if it's OK
  *
  */
-int controller_saveAsText(char* path , LinkedList* pArrayListEmployee);
+int controller_saveAsText(char* path , LinkedList* pArrayListEmployee, int flag);
 
 /** \brief function that works as a bridge between the main and the load of the employees to the binary file
  *
  * \param path char*: file name
  * \param pArrayListEmployee LinkedList*
- * \return int: Returns 0 if there is an NULL element or there isn't any employees in the list or 1 if it's OK
+ * \param flag int: flag that validates that the file that has been opened before corresponds to the type of file
+ *                  in which it will be saved (if a binary file has been opened, it can be saved in the option "Save
+ *                  employee data in the file data.bin")
+ * \return int: Returns 0 if there is an NULL element or 1 if it's OK
  *
  */
-int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee);
+int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee, int flag);
 
 
 

@@ -214,7 +214,7 @@ int IsAnUnsignedIntNumber(char charArray[])
     }
     return ret;
 }
-int FunctionReturnMessagesWithDefault(int* id,int* flagMenue, int* flagReading,int ret, char message_3[], char message_2[], char message_1[], char message0[], char defaultMessage[])
+int FunctionReturnMessagesWithDefault(int* id,int* flagMenue,int ret, char message_3[], char message_2[], char message_1[], char message0[], char defaultMessage[])
 {
     int Return=0;
 
@@ -224,8 +224,8 @@ int FunctionReturnMessagesWithDefault(int* id,int* flagMenue, int* flagReading,i
         break;
     case -2:
         printf("%s\n",message_2);
+        *id=0;
         *flagMenue=1;
-        *flagReading=1;
         break;
     case -1:
         printf("%s\n",message_1);
@@ -235,7 +235,6 @@ int FunctionReturnMessagesWithDefault(int* id,int* flagMenue, int* flagReading,i
         break;
     default:
         *flagMenue=1;
-        *flagReading=1;
         printf("%s\n",defaultMessage);
         *id=ret;
     }

@@ -12,8 +12,6 @@ int main()
     int ret;
     int option;
     int flagMenu=0;
-    int flagText=0;
-    int flagBinary=0;
     char confirmation[100];
     do{
         option=UserMenue();
@@ -21,16 +19,16 @@ int main()
         switch(option)
         {
             case 1:
-                ret=controller_loadFromText("data.csv",myList, flagMenu);
-                FunctionReturnMessagesWithDefault(&id,&flagMenu, &flagText,ret,"YA SE LEYO UN ARCHIVO","CARPETA CREADA EXITOSAMENTE!","ERROR AL CREAR LA CARPETA!","ERROR!(elemento nulo)","CARGA EXITOSA!");
+                ret=controller_loadFromText("data.csv",myList);
+                FunctionReturnMessagesWithDefault(&id,&flagMenu,ret,"","CARPETA CREADA EXITOSAMENTE!","ERROR AL CREAR LA CARPETA!","ERROR!(elemento nulo)","CARGA EXITOSA!");
                 break;
             case 2:
-                ret=controller_loadFromBinary("data.bin", myList, flagMenu);
-                FunctionReturnMessagesWithDefault(&id,&flagMenu, &flagBinary,ret,"YA SE LEYO UN ARCHIVO","CARPETA CREADA EXITOSAMENTE!","ERROR AL CREAR LA CARPETA!","ERROR!(elemento nulo)","CARGA EXITOSA!");
+                ret=controller_loadFromBinary("data.bin", myList);
+                FunctionReturnMessagesWithDefault(&id,&flagMenu,ret,"","CARPETA CREADA EXITOSAMENTE!","ERROR AL CREAR LA CARPETA!","ERROR!(elemento nulo)","CARGA EXITOSA!");
                 break;
             case 3:
                 ret=controller_addEmployee(myList, &id, flagMenu);
-                FunctionReturnMessages(ret," ", " ", "ERROR!(elemento nulo o no se leyo el archivo)","ALTA EXITOSA!");
+                FunctionReturnMessages(ret," ", " ", "ERROR!(elemento NULL o no se leyo el archivo)","ALTA EXITOSA!");
                 break;
             case 4:
                 ret=controller_editEmployee(myList);
@@ -49,12 +47,12 @@ int main()
                 FunctionReturnMessages(ret," ", " ", "ERROR!(elemento nulo o no hay empleados en la lista)"," ");
                 break;
             case 8:
-                ret=controller_saveAsText("data.csv",myList, flagText);
-                FunctionReturnMessages(ret," ", " ", "ERROR!(elemento nulo o no se esta trabajando con la carpeta correspondiente)","SE HA GUARDADO EL ARCHIVO EXITOSAMENTE!");
+                ret=controller_saveAsText("data.csv",myList);
+                FunctionReturnMessages(ret," ", " ", "ERROR!(Elemento nulo o no hay empleados para cargar en el archivo)","SE HA GUARDADO EL ARCHIVO EXITOSAMENTE!");
                 break;
             case 9:
-                ret=controller_saveAsBinary("data.bin", myList, flagBinary);
-                FunctionReturnMessages(ret," ", " ", "ERROR!(elemento nulo o no se esta trabajando con la carpeta correspondiente)","SE HA GUARDADO EL ARCHIVO EXITOSAMENTE!");
+                ret=controller_saveAsBinary("data.bin", myList);
+                FunctionReturnMessages(ret," ", " ", "ERROR!(Elemento nulo o no hay empleados para cargar en el archivo)","SE HA GUARDADO EL ARCHIVO EXITOSAMENTE!");
                 break;
             case 10:
                 getString(confirmation,"Está seguro que desea salir?","ERROR! Está seguro que desea salir?");

@@ -8,13 +8,17 @@
 
 
 
-int controller_loadFromText(char* path, LinkedList* pArrayListEmployee, int flag)
+int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 {
     FILE* myTextFile;
     int ret=-1;
 
-    if(path!=NULL && pArrayListEmployee!= NULL && flag==0)
+
+    if(path!=NULL && pArrayListEmployee!= NULL)
     {
+        ll_clear(pArrayListEmployee);
+        printf("Se ha limpiado la lista\n");
+
         myTextFile=fopen(path, "r");
         if(myTextFile!=NULL)
         {
@@ -29,23 +33,25 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee, int flag
                 ret=-2;
             }
         }
-    }else if(flag==1){
-        ret=-3;
     }else{
-        ret=0;
+    ret=0;
     }
+
+
 
     return ret;
 }
 
 
-int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee, int flag)
+int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 {
     FILE* myBinaryFile;
     int ret=-1;
 
-    if(path!=NULL && pArrayListEmployee!= NULL && flag==0)
+    if(path!=NULL && pArrayListEmployee!= NULL)
     {
+        ll_clear(pArrayListEmployee);
+        printf("Se ha limpiado la lista\n");
         myBinaryFile=fopen(path, "rb");
         if(myBinaryFile!=NULL)
         {
@@ -60,13 +66,9 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee, int fl
                 ret=-2;
             }
         }
-    }else if(flag==1){
-        ret=-3;
     }else{
         ret=0;
     }
-
-
     return ret;
 }
 
@@ -224,12 +226,12 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 }
 
 
-int controller_saveAsText(char* path, LinkedList* pArrayListEmployee, int flag)
+int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 {
     FILE* myTextFile;
     int ret=0;
 
-    if(pArrayListEmployee != NULL && path != NULL && flag==1)
+    if(pArrayListEmployee != NULL && path != NULL && ll_isEmpty(pArrayListEmployee)==0)
     {
         myTextFile=fopen(path, "w");
         if(myTextFile!= NULL)
@@ -240,12 +242,12 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee, int flag)
     return ret;
 }
 
-int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee, int flag)
+int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {
     FILE* myBinaryFile;
     int ret=0;
 
-    if(path!=NULL && pArrayListEmployee!= NULL && flag==1)
+    if(path!=NULL && pArrayListEmployee!= NULL && ll_isEmpty(pArrayListEmployee)==0)
     {
         myBinaryFile=fopen(path, "wb");
         if(myBinaryFile!=NULL)

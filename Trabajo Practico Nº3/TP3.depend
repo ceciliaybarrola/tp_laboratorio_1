@@ -256,7 +256,7 @@
 1591462351 source:c:\users\user1\desktop\trabajo practico 3\tp3\inputs.c
 	"Inputs.h"
 
-1591990470 source:c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\employee.c
+1592054793 source:c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\employee.c
 	<stdlib.h>
 	"Employee.h"
 	"Inputs.h"
@@ -266,20 +266,20 @@
 1591915423 c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\employee.h
 	"Controller.h"
 
-1591985355 c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\controller.h
+1592059978 c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\controller.h
 	"LinkedList.h"
 
 1591990258 c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\linkedlist.h
 
-1591987133 c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\inputs.h
+1592054080 c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\inputs.h
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 
-1591990506 source:c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\inputs.c
+1592059707 source:c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\inputs.c
 	"Inputs.h"
 
-1591990431 source:c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\main.c
+1592060223 source:c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -293,7 +293,7 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1591990480 source:c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\controller.c
+1592059967 source:c:\users\user1\desktop\trabajo practico 3\trabajo practico nº3\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

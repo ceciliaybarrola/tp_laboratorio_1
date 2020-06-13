@@ -34,8 +34,6 @@ Employee* employee_newParameters(char* idStr,char* nameStr,char* hoursWorkedStr,
     }else{
         printf("ERROR\n");
     }
-
-
     return employee;
 }
 int employee_delete(LinkedList* pArrayListEmployee, int index)
