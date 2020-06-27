@@ -33,7 +33,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="../inc/LinkedList.h" />
 		<Unit filename="../testing/inc/Employee.h" />
 		<Unit filename="../testing/inc/addNodeTest.h" />
 		<Unit filename="../testing/inc/addTest.h" />
@@ -125,6 +124,7 @@
 		<Unit filename="LinkedList.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="LinkedList.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

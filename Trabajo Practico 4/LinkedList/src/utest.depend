@@ -4858,7 +4858,7 @@
 
 1532345152 c:\users\user1\desktop\trabajo practico 4\linkedlist\testing\utest.h
 
-1592319395 c:\users\user1\desktop\trabajo practico 4\linkedlist\inc\linkedlist.h
+1593290718 c:\users\user1\desktop\trabajo practico 4\linkedlist\inc\linkedlist.h
 
 1532345166 c:\users\user1\desktop\trabajo practico 4\linkedlist\testing\inc\employee.h
 
@@ -5079,11 +5079,11 @@
 	<stdlib.h>
 	<string.h>
 
-1593203222 source:c:\users\user1\desktop\trabajo practico 4\linkedlist\src\linkedlist.c
+1593204354 source:c:\users\user1\desktop\trabajo practico 4\linkedlist\src\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	"../inc/LinkedList.h"
+	"LinkedList.h"
 
 1592942060 source:c:\users\user1\desktop\trabajo practico 4\linkedlist\src\main.c
 	<stdio.h>
@@ -5093,4 +5093,6 @@
 	"../inc/LinkedList.h"
 
 1532345168 c:\users\user1\desktop\trabajo practico 4\linkedlist\testing\inc\main_test.h
+
+1593290884 c:\users\user1\desktop\trabajo practico 4\linkedlist\src\linkedlist.h
 

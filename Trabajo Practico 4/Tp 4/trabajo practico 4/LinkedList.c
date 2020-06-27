@@ -403,7 +403,6 @@ void* ll_pop(LinkedList* this,int index)
 {
     void* returnAux = NULL;
     Node* nodo;
-    Node* pre;
     if(this!=NULL)
     {
         if((nodo=getNode(this, index))!=NULL && ll_remove(this, index)== 0){
@@ -494,8 +493,6 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
     LinkedList* cloneArray = NULL;
     int i;
     int j=0;
-    void* pElement;
-    Node* nodo;
 
     if(this!=NULL && from>=0 && from < ll_len(this) && to>from && to <= ll_len(this))
     {
