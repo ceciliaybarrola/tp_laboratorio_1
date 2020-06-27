@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1593262049 source:c:\users\user1\desktop\trabajo practico 4\tp 4\trabajo practico 4\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"Inputs.h"
+	"parser.h"
+
+1593261718 c:\users\user1\desktop\trabajo practico 4\tp 4\trabajo practico 4\linkedlist.h
+
+1593261862 c:\users\user1\desktop\trabajo practico 4\tp 4\trabajo practico 4\controller.h
+	"LinkedList.h"
+	"Employee.h"
+
+1593261911 c:\users\user1\desktop\trabajo practico 4\tp 4\trabajo practico 4\employee.h
+	"Controller.h"
+
+1593261718 c:\users\user1\desktop\trabajo practico 4\tp 4\trabajo practico 4\inputs.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+
+1593261719 source:c:\users\user1\desktop\trabajo practico 4\tp 4\trabajo practico 4\employee.c
+	<stdlib.h>
+	"Employee.h"
+	"Inputs.h"
+	<string.h>
+	<stdio.h>
+
+1593261719 source:c:\users\user1\desktop\trabajo practico 4\tp 4\trabajo practico 4\inputs.c
+	"Inputs.h"
+
+1593261718 source:c:\users\user1\desktop\trabajo practico 4\tp 4\trabajo practico 4\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1593262097 source:c:\users\user1\desktop\trabajo practico 4\tp 4\trabajo practico 4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"Inputs.h"
+
+1593261719 source:c:\users\user1\desktop\trabajo practico 4\tp 4\trabajo practico 4\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1593261719 c:\users\user1\desktop\trabajo practico 4\tp 4\trabajo practico 4\parser.h
+
